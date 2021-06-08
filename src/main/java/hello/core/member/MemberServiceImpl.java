@@ -4,7 +4,11 @@ public class MemberServiceImpl implements MemberService {
 
     // 인터페이스 의존 그런데 구현체에도 의존
     // 추상화에 의존하면서 구체화에도 의존
-   private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberServiceImpl(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     @Override
     public void join(Member member) {
